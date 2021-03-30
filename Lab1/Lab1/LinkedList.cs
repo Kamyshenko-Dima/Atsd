@@ -28,6 +28,17 @@ namespace Lab1
             }
             Console.WriteLine();
         }
+        public int Length()
+        {
+            int l = 0;
+            Node temp_node = head;
+            while(temp_node != null)
+            {
+                l++;
+                temp_node = temp_node.Next;
+            }
+            return l;
+        }
         static void Main(string[] args)
         {
             LinkedList llist = new LinkedList();
@@ -39,6 +50,8 @@ namespace Lab1
             second.Next = third;
 
             llist.PrintList();
+
+            Console.WriteLine(llist.Length());
         }
     }
 }
