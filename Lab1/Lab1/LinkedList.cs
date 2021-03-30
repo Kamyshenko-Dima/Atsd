@@ -5,18 +5,7 @@ namespace Lab1
     class LinkedList
     {
         Node head;
-        class Node
-        {
-            public int Data;
-            public Node Next;
-
-            //constructor
-            public Node(int d)
-            {
-                Data = d;
-                Next = null;
-            }
-        }
+        
 
         public void PrintList()
         {
@@ -39,14 +28,14 @@ namespace Lab1
             }
             return l;
         }
-        public int FindData(int item)
+        public int FindData(int data)
         {
             int count = 0;
             Node temp_node = head;
             while(temp_node != null)
             {
                 count++;
-                if(temp_node.Data == item)
+                if(temp_node.Data == data)
                 {
                     return count;
                 }
@@ -61,19 +50,30 @@ namespace Lab1
             new_node.Next = head;
             head = new_node;
         }
+        public void AddDataAfter(Node prev_node, int data)
+        {
+            if(head == null)
+            {
+                head = new Node(data);
+                return;
+            }
+            Node new_node = new Node(data);
+            new_node.Next = prev_node.Next;
+            prev_node.Next = new_node;
+        }
         static void Main(string[] args)
         {
             LinkedList llist = new LinkedList();
             llist.head = new Node(1);
             Node second = new Node(2);
-            Node third = new Node(3);
+            Node third = new Node(4);
 
             llist.head.Next = second;
             second.Next = third;
 
             llist.PrintList();
 
-            llist.AddDataToFront(0);
+            llist.AddDataAfter(third, 3);
 
             llist.PrintList();
         }
