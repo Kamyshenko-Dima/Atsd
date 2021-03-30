@@ -54,6 +54,13 @@ namespace Lab1
             }
             return -10000;
         }
+
+        public void AddDataToFront(int data)
+        {
+            Node new_node = new Node(data);
+            new_node.Next = head;
+            head = new_node;
+        }
         static void Main(string[] args)
         {
             LinkedList llist = new LinkedList();
@@ -66,7 +73,9 @@ namespace Lab1
 
             llist.PrintList();
 
-            Console.WriteLine(llist.FindData(0));
+            llist.AddDataToFront(0);
+
+            llist.PrintList();
         }
     }
 }
