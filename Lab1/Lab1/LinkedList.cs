@@ -61,6 +61,31 @@ namespace Lab1
             new_node.Next = prev_node.Next;
             prev_node.Next = new_node;
         }
+        public void DeleteData(int data)
+        {
+            Node temp_node = head;
+            Node prev_node = null;
+
+            if (temp_node != null && temp_node.Data == data)
+            {
+                head = temp_node.Next;
+                return;
+            }
+
+            while (temp_node != null && temp_node.Data != data)
+            {
+                prev_node = temp_node;
+                temp_node = temp_node.Next;
+            }
+
+            if (temp_node == null)
+            {
+                return;
+            }
+                
+
+            prev_node.Next = temp_node.Next;
+        }
         static void Main(string[] args)
         {
             LinkedList llist = new LinkedList();
@@ -73,7 +98,7 @@ namespace Lab1
 
             llist.PrintList();
 
-            llist.AddDataAfter(third, 3);
+            llist.DeleteData(0);
 
             llist.PrintList();
         }
