@@ -39,6 +39,21 @@ namespace Lab1
             }
             return l;
         }
+        public int FindData(int item)
+        {
+            int count = 0;
+            Node temp_node = head;
+            while(temp_node != null)
+            {
+                count++;
+                if(temp_node.Data == item)
+                {
+                    return count;
+                }
+                temp_node = temp_node.Next;
+            }
+            return -10000;
+        }
         static void Main(string[] args)
         {
             LinkedList llist = new LinkedList();
@@ -51,7 +66,7 @@ namespace Lab1
 
             llist.PrintList();
 
-            Console.WriteLine(llist.Length());
+            Console.WriteLine(llist.FindData(0));
         }
     }
 }
