@@ -141,6 +141,21 @@ namespace Lab1
             return new_head;
         }
 
+        public int SumEvenNumbers()
+        {
+            int sum = 0;
+            Node temp_node = head;
+            while(temp_node != null)
+            {
+                if(temp_node.Data % 2 == 0)
+                {
+                    sum += temp_node.Data;
+                }
+                temp_node = temp_node.Next;
+            }
+            return sum;
+        }
+
         public Node Read()
         {
             Node new_head = new Node();
@@ -180,8 +195,11 @@ namespace Lab1
 
 
             llist3.head = llist3.Read();
-            Console.WriteLine("-------------------");
+            Console.WriteLine("----------------");
             llist3.PrintList();
+            Console.WriteLine("----------------");
+            int x = llist3.SumEvenNumbers();
+            Console.WriteLine(x);
         }
     }
 }
