@@ -5,7 +5,6 @@ namespace Lab1
     class LinkedList
     {
         Node head;
-        
 
         public void PrintList()
         {
@@ -82,23 +81,46 @@ namespace Lab1
             {
                 return;
             }
-                
 
             prev_node.Next = temp_node.Next;
         }
+
+        public void AddNodeToEnd(Node new_node)
+        {
+            if(head == null)
+            {
+                head = new_node;
+            }
+            else
+            {
+                Node temp_node = head;
+                while(temp_node.Next != null)
+                {
+                    temp_node = temp_node.Next;
+                }
+                temp_node.Next = new_node;
+            }
+        }
+
+        //public LinkedList Merge(LinkedList llist2)
+        //{
+        //    LinkedList new_llist = new LinkedList();
+            
+        //}
         static void Main(string[] args)
         {
             LinkedList llist = new LinkedList();
-            llist.head = new Node(1);
-            Node second = new Node(2);
-            Node third = new Node(4);
 
-            llist.head.Next = second;
-            second.Next = third;
+            
+            llist.AddNodeToEnd(new Node(1));
+            llist.AddNodeToEnd(new Node(2));
+            llist.AddNodeToEnd(new Node(4));
+            llist.AddNodeToEnd(new Node(3));
+            
 
             llist.PrintList();
 
-            llist.DeleteData(0);
+            llist.DeleteData(4);
 
             llist.PrintList();
         }
