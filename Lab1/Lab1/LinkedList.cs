@@ -102,27 +102,51 @@ namespace Lab1
             }
         }
 
-        //public LinkedList Merge(LinkedList llist2)
-        //{
-        //    LinkedList new_llist = new LinkedList();
+        
+        public void DeleteDuplicates()
+        {
+            Node new_node = head;
+            Node nnode;
+
+
+            while(new_node.Next != null)
+            {
+                if(new_node.Data == new_node.Next.Data)
+                {
+                    nnode = new_node.Next.Next;
+                    new_node.Next = null;
+                    new_node.Next = nnode;
+                }
+                else
+                {
+                    new_node = new_node.Next;
+                }
+            }
+        }
             
-        //}
+
         static void Main(string[] args)
         {
-            LinkedList llist = new LinkedList();
+            LinkedList llist1 = new LinkedList();
+            LinkedList llist2 = new LinkedList();
+            LinkedList llist3 = new LinkedList();
 
             
-            llist.AddNodeToEnd(new Node(1));
-            llist.AddNodeToEnd(new Node(2));
-            llist.AddNodeToEnd(new Node(4));
-            llist.AddNodeToEnd(new Node(3));
+            llist1.AddNodeToEnd(new Node(1));
+            llist1.AddNodeToEnd(new Node(3));
+            llist1.AddNodeToEnd(new Node(3));
+            llist1.AddNodeToEnd(new Node(3));
+            llist1.AddNodeToEnd(new Node(5));
+
+            llist2.AddNodeToEnd(new Node(2));
+            llist2.AddNodeToEnd(new Node(4));
             
 
-            llist.PrintList();
+            llist1.PrintList();
 
-            llist.DeleteData(4);
+            llist1.DeleteDuplicates();
 
-            llist.PrintList();
+            llist1.PrintList();
         }
     }
 }
