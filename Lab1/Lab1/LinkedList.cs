@@ -141,6 +141,30 @@ namespace Lab1
             return new_head;
         }
 
+        public Node Read()
+        {
+            Node new_head = new Node();
+            Node temp_node;
+            Console.WriteLine("Enter the number of elements");
+            int l = Convert.ToInt32(Console.ReadLine());
+            int[] arr = new int[l];
+            for(int i = 0; i < l; i++)
+            {
+                Console.WriteLine($"Enter {i + 1} element:");
+                arr[i] = Convert.ToInt32(Console.ReadLine());
+            }
+            Array.Sort(arr);
+            Array.Reverse(arr);
+            for(int i = 0; i < l; i++)
+            {
+                temp_node = new Node(arr[i]);
+                temp_node.Next = new_head.Next;
+                new_head.Next = temp_node;
+            }
+            return new_head.Next;
+        }
+
+
         static void Main(string[] args)
         {
             LinkedList llist1 = new LinkedList();
@@ -153,13 +177,10 @@ namespace Lab1
             llist1.AddNodeToEnd(new Node(3));
             llist1.AddNodeToEnd(new Node(4));
             llist1.AddNodeToEnd(new Node(5));
-            
 
-            llist1.PrintList();
 
-            llist3.head = llist1.Separate(1);
-
-            llist1.PrintList();
+            llist3.head = llist3.Read();
+            Console.WriteLine("-------------------");
             llist3.PrintList();
         }
     }
