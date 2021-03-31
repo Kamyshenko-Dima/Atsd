@@ -1,14 +1,16 @@
 ﻿using System;
+using System.Collections;
+using System.Collections.Generic;
 
 namespace Lab1
 {
-    class LinkedList
+    class LinkedList<T>
     {
-        Node head;
+        public Node<T> head;
 
         public void PrintList()
         {
-            Node n = head;
+            Node<T> n = head;
             while(n != null)
             {
                 Console.Write(n.Data + " ");
@@ -19,7 +21,7 @@ namespace Lab1
         public int Length()
         {
             int l = 0;
-            Node temp_node = head;
+            Node<T> temp_node = head;
             while(temp_node != null)
             {
                 l++;
@@ -27,14 +29,14 @@ namespace Lab1
             }
             return l;
         }
-        public int FindData(int data)
+        public int FindData(T data)
         {
             int count = 0;
-            Node temp_node = head;
+            Node<T> temp_node = head;
             while(temp_node != null)
             {
                 count++;
-                if(temp_node.Data == data)
+                if(temp_node.Data.Equals(data))
                 {
                     return count;
                 }
@@ -43,35 +45,35 @@ namespace Lab1
             return -10000;
         }
 
-        public void AddDataToFront(int data)
+        public void AddDataToFront(T data)
         {
-            Node new_node = new Node(data);
+            Node<T> new_node = new Node<T>(data);
             new_node.Next = head;
             head = new_node;
         }
-        public void AddDataAfter(Node prev_node, int data)
+        public void AddDataAfter(Node<T> prev_node, T data)
         {
             if(head == null)
             {
-                head = new Node(data);
+                head = new Node<T>(data);
                 return;
             }
-            Node new_node = new Node(data);
+            Node<T> new_node = new Node<T>(data);
             new_node.Next = prev_node.Next;
             prev_node.Next = new_node;
         }
-        public void DeleteData(int data)
+        public void DeleteData(T data)
         {
-            Node temp_node = head;
-            Node prev_node = null;
+            Node<T> temp_node = head;
+            Node<T> prev_node = null;
 
-            if (temp_node != null && temp_node.Data == data)
+            if (temp_node != null && temp_node.Data.Equals(data))
             {
                 head = temp_node.Next;
                 return;
             }
 
-            while (temp_node != null && temp_node.Data != data)
+            while (temp_node != null && !temp_node.Data.Equals(data))
             {
                 prev_node = temp_node;
                 temp_node = temp_node.Next;
@@ -85,7 +87,7 @@ namespace Lab1
             prev_node.Next = temp_node.Next;
         }
 
-        public void AddNodeToEnd(Node new_node)
+        public void AddNodeToEnd(Node<T> new_node)
         {
             if(head == null)
             {
@@ -93,7 +95,7 @@ namespace Lab1
             }
             else
             {
-                Node temp_node = head;
+                Node<T> temp_node = head;
                 while(temp_node.Next != null)
                 {
                     temp_node = temp_node.Next;
@@ -102,14 +104,61 @@ namespace Lab1
             }
         }
 
+      //  public Node OrderedMerge(Node head1, Node head2)
+      //  {
+      //      /* a dummy first node to 
+      //hang the result on */
+      //      Node new_node = new Node();
+      //      Node temp_node = new_node;
+      //      /* tail points to the 
+      //      last result node */
+
+      //      while (true)
+      //      {
+
+      //          /* if either list runs out, 
+      //          use the other list */
+      //          if (head1 == null)
+      //          {
+      //              temp_node.Next = head2;
+      //              break;
+      //          }
+      //          if (head2 == null)
+      //          {
+      //              temp_node.Next = head1;
+      //              break;
+      //          }
+
+      //          /* Compare the data of the two 
+      //          lists whichever lists' data is 
+      //          smaller, append it into tail and 
+      //          advance the head to the next Node 
+      //          */
+      //          if (head1.Data <= head2.Data)
+      //          {
+      //              temp_node.Next = head1;
+      //              head1 = head1.Next;
+      //          }
+      //          else
+      //          {
+      //              temp_node.Next = head2;
+      //              head2 = head2.Next;
+      //          }
+
+      //          /* Advance the tail */
+      //          temp_node = temp_node.Next;
+      //      }
+      //      return new_node.Next;
+
+      //  }
         public void DeleteDuplicates()
         {
-            Node new_node = head;
-            Node nnode;
+            Node<T> new_node = head;
+            Node<T> nnode;
 
             while(new_node.Next != null)
             {
-                if(new_node.Data == new_node.Next.Data)
+                if(new_node.Data.Equals(new_node.Next.Data))
                 {
                     nnode = new_node.Next.Next;
                     new_node.Next = null;
@@ -122,10 +171,10 @@ namespace Lab1
             }
         }
             
-        public Node Separate(int pos)
+        public Node<T> Separate(int pos)
         {
-            Node new_head = new Node();
-            Node temp_node = head;
+            Node<T> new_head = new Node<T>();
+            Node<T> temp_node = head;
             int count = 0;
             while(temp_node != null)
             {
@@ -141,38 +190,39 @@ namespace Lab1
             return new_head;
         }
 
-        public int SumEvenNumbers()
-        {
-            int sum = 0;
-            Node temp_node = head;
-            while(temp_node != null)
-            {
-                if(temp_node.Data % 2 == 0)
-                {
-                    sum += temp_node.Data;
-                }
-                temp_node = temp_node.Next;
-            }
-            return sum;
-        }
+        //int SumEvenNumbers()
+        //{ 
+        //    int sum = 0;
+        //    Node<int> temp_node = head;
 
-        public Node Read()
+        //    while (temp_node != null)
+        //    {
+        //        //if (temp_node.Data % 2 == 0) 
+        //        //{
+        //        //    sum += temp_node.Data;
+        //        //}
+                
+        //        temp_node = temp_node.Next;
+        //    }
+        //    return sum;
+        //}
+        public Node<int> Read()
         {
-            Node new_head = new Node();
-            Node temp_node;
+            Node<int> new_head = new Node<int>();
+            Node<int> temp_node;
             Console.WriteLine("Enter the number of elements");
             int l = Convert.ToInt32(Console.ReadLine());
             int[] arr = new int[l];
-            for(int i = 0; i < l; i++)
+            for (int i = 0; i < l; i++)
             {
                 Console.WriteLine($"Enter {i + 1} element:");
                 arr[i] = Convert.ToInt32(Console.ReadLine());
             }
             Array.Sort(arr);
             Array.Reverse(arr);
-            for(int i = 0; i < l; i++)
+            for (int i = 0; i < l; i++)
             {
-                temp_node = new Node(arr[i]);
+                temp_node = new Node<int>(arr[i]);
                 temp_node.Next = new_head.Next;
                 new_head.Next = temp_node;
             }
@@ -180,26 +230,6 @@ namespace Lab1
         }
 
 
-        static void Main(string[] args)
-        {
-            LinkedList llist1 = new LinkedList();
-            LinkedList llist2 = new LinkedList();
-            LinkedList llist3 = new LinkedList();
 
-            
-            llist1.AddNodeToEnd(new Node(1));
-            llist1.AddNodeToEnd(new Node(2));
-            llist1.AddNodeToEnd(new Node(3));
-            llist1.AddNodeToEnd(new Node(4));
-            llist1.AddNodeToEnd(new Node(5));
-
-
-            llist3.head = llist3.Read();
-            Console.WriteLine("----------------");
-            llist3.PrintList();
-            Console.WriteLine("----------------");
-            int x = llist3.SumEvenNumbers();
-            Console.WriteLine(x);
-        }
     }
 }
