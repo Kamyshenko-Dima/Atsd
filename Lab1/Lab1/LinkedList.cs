@@ -102,12 +102,10 @@ namespace Lab1
             }
         }
 
-        
         public void DeleteDuplicates()
         {
             Node new_node = head;
             Node nnode;
-
 
             while(new_node.Next != null)
             {
@@ -124,6 +122,24 @@ namespace Lab1
             }
         }
             
+        public Node Separate(int pos)
+        {
+            Node new_head = new Node();
+            Node temp_node = head;
+            int count = 0;
+            while(temp_node != null)
+            {
+                count++;
+                if(count == pos)
+                {
+                    new_head = temp_node.Next;
+                    temp_node.Next = null;
+                    break;
+                }
+                temp_node = temp_node.Next;
+            }
+            return new_head;
+        }
 
         static void Main(string[] args)
         {
@@ -133,20 +149,18 @@ namespace Lab1
 
             
             llist1.AddNodeToEnd(new Node(1));
+            llist1.AddNodeToEnd(new Node(2));
             llist1.AddNodeToEnd(new Node(3));
-            llist1.AddNodeToEnd(new Node(3));
-            llist1.AddNodeToEnd(new Node(3));
+            llist1.AddNodeToEnd(new Node(4));
             llist1.AddNodeToEnd(new Node(5));
-
-            llist2.AddNodeToEnd(new Node(2));
-            llist2.AddNodeToEnd(new Node(4));
             
 
             llist1.PrintList();
 
-            llist1.DeleteDuplicates();
+            llist3.head = llist1.Separate(1);
 
             llist1.PrintList();
+            llist3.PrintList();
         }
     }
 }
