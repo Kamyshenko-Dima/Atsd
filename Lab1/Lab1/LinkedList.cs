@@ -103,53 +103,40 @@ namespace Lab1
             }
         }
 
-      //  public Node<T> OrderedMerge(Node<T> head1, Node<T> head2)
-      //  {
-      //      /* a dummy first node to 
-      //hang the result on */
-      //      Node<T> new_node = new Node<T>();
-      //      Node<T> temp_node = new_node;
-      //      /* tail points to the 
-      //      last result node */
+        public Node OrderedMerge(Node head1, Node head2)
+        {
+            Node new_node = new Node();
+            Node temp_node = new_node;
 
-      //      while (true)
-      //      {
+            while (true)
+            {
 
-      //          /* if either list runs out, 
-      //          use the other list */
-      //          if (head1 == null)
-      //          {
-      //              temp_node.Next = head2;
-      //              break;
-      //          }
-      //          if (head2 == null)
-      //          {
-      //              temp_node.Next = head1;
-      //              break;
-      //          }
+                if (head1 == null)
+                {
+                    temp_node.Next = head2;
+                    break;
+                }
+                if (head2 == null)
+                {
+                    temp_node.Next = head1;
+                    break;
+                }
 
-      //          /* Compare the data of the two 
-      //          lists whichever lists' data is 
-      //          smaller, append it into tail and 
-      //          advance the head to the next Node 
-      //          */
-      //          if (head1.Data <= head2.Data)
-      //          {
-      //              temp_node.Next = head1;
-      //              head1 = head1.Next;
-      //          }
-      //          else
-      //          {
-      //              temp_node.Next = head2;
-      //              head2 = head2.Next;
-      //          }
+                if (head1.Data <= head2.Data)
+                {
+                    temp_node.Next = head1;
+                    head1 = head1.Next;
+                }
+                else
+                {
+                    temp_node.Next = head2;
+                    head2 = head2.Next;
+                }
+                temp_node = temp_node.Next;
+            }
+            return new_node.Next;
 
-      //          /* Advance the tail */
-      //          temp_node = temp_node.Next;
-      //      }
-      //      return new_node.Next;
-
-      //  }
+        }
         public void DeleteDuplicates()
         {
             Node new_node = head;
