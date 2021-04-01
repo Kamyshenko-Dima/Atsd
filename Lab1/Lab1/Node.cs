@@ -10,13 +10,13 @@ namespace Lab1
         public Node Next;
 
         //constructor
-        
+
         public Node(int d = 0)
         {
             Data = d;
             Next = null;
         }
 
-     
+        
     }
 }

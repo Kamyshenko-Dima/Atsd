@@ -13,16 +13,17 @@ namespace Lab1
             LinkedList llist3 = new LinkedList();
 
 
-            llist1.AddNodeToEnd(new Node(1));
-            llist1.AddNodeToEnd(new Node(2));
             llist1.AddNodeToEnd(new Node(4));
+            llist1.AddNodeToEnd(new Node(3));
+            llist1.AddNodeToEnd(new Node(2));
+            llist1.AddNodeToEnd(new Node(1));
 
             
             
 
             llist1.PrintList();
-            Console.WriteLine("--------------");
-            llist1.DeleteDuplicates();
+            Console.WriteLine(new string('-', 20));
+            llist1.Reverse();
             llist1.PrintList();
 
             //llist3.head = llist3.Read();

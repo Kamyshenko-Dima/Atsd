@@ -215,6 +215,21 @@ namespace Lab1
             return new_head.Next;
         }
 
+        public void Reverse()
+        {
+            Node new_node = head;
+            Node prev_node = null;
+            Node next_node = null;
+
+            while (new_node != null)
+            {
+                next_node = new_node.Next;
+                new_node.Next = prev_node;
+                prev_node = new_node;
+                new_node = next_node;
+            }
+            head = prev_node;
+        }
 
 
     }
