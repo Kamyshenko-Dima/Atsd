@@ -8,14 +8,14 @@ namespace Lab1
     {
         static void Main(string[] args)
         {
-            LinkedList<int> llist1 = new LinkedList<int>();
-            LinkedList<int> llist2 = new LinkedList<int>();
-            LinkedList<string> llist3 = new LinkedList<string>();
+            LinkedList llist1 = new LinkedList();
+            LinkedList llist2 = new LinkedList();
+            LinkedList llist3 = new LinkedList();
 
 
-            llist1.AddNodeToEnd(new Node<int>(1));
-            llist1.AddNodeToEnd(new Node<int>(2));
-            llist1.AddNodeToEnd(new Node<int>(4));
+            llist1.AddNodeToEnd(new Node(1));
+            llist1.AddNodeToEnd(new Node(2));
+            llist1.AddNodeToEnd(new Node(4));
 
             
             
