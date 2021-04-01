@@ -4,21 +4,19 @@ using System.Text;
 
 namespace Lab1
 {
-    class Node <T>
+    class Node
     {
-        public T Data;
-        public Node<T> Next;
+        public int Data;
+        public Node Next;
 
         //constructor
-        public Node()
-        {
-            
-            Next = null;
-        }
-        public Node(T d)
+        
+        public Node(int d = 0)
         {
             Data = d;
             Next = null;
         }
+
+     
     }
 }

@@ -15,13 +15,15 @@ namespace Lab1
 
             llist1.AddNodeToEnd(new Node<int>(1));
             llist1.AddNodeToEnd(new Node<int>(2));
+            llist1.AddNodeToEnd(new Node<int>(4));
 
-            llist2.head = llist2.Read();
+            
             
 
             llist1.PrintList();
             Console.WriteLine("--------------");
-            llist2.PrintList();
+            llist1.DeleteDuplicates();
+            llist1.PrintList();
 
             //llist3.head = llist3.Read();
             //Console.WriteLine("----------------");
